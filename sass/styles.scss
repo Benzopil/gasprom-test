@@ -1,0 +1,206 @@
+@charset "UTF-8";
+
+@import 'abstracts/mixins';
+
+@import 'base/base',
+'base/typography';
+
+
+.stock {
+    padding: 10rem 3rem;
+    background: linear-gradient(45deg, #273efe, #131d7e);
+    min-height: 100vh;
+    color: #fff;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: 10% 65% 20%;
+    grid-gap: 7rem 4rem;
+
+    &__hor {
+        grid-row: 2/3;
+        grid-column: 2/3;
+        display: flex;
+
+        .table__info {
+            flex: 1;
+            text-align: center;
+        }
+    }
+
+    &__vert {
+        .table__info {
+            height: 15rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+
+            &-elem {
+                &:not(:last-child) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+    }
+
+    &__info {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    &__desig {
+        position: absolute;
+        font-size: 1.4rem;
+        z-index: 2;
+
+        &.--x {
+            bottom: -3rem;
+            right: 0;
+        }
+
+        &.--y {
+            top: -5rem;
+            left: -6rem;
+        }
+
+        &.--volume {
+            top: -3rem;
+            right: -0.2rem;
+        }
+    }
+
+    &__t {
+        border: 1px solid #dedede;
+        background: linear-gradient(45deg, #d61c1c, #51E71C);
+        position: relative;
+
+        &::before,
+        &::after {
+            content: '';
+            display: inline-block;
+            width: 1.6rem;
+            height: 2.1rem;
+            position: absolute;
+            z-index: 2;
+            background: url('../img/arr.svg')no-repeat center/cover;
+        }
+
+        &::before {
+            top: -2.1rem;
+            left: -0.7rem;
+        }
+
+        &::after {
+            bottom: -1rem;
+            right: -2rem;
+            transform: rotate(90deg);
+        }
+    }
+
+    &__row {
+        display: flex;
+        flex: 1;
+    }
+
+    &__cell {
+        height: 15rem;
+        flex: 1;
+        border: 1px solid rgba(265, 265, 265, .2);
+        cursor: pointer;
+        position: relative;
+
+        &.active {
+            border: 1px solid #fff;
+            box-shadow: 0px 0px 5px 1px rgb(255, 255, 255, .5);
+        }
+
+        &-changes {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        &-value {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+        }
+
+        &-descr {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        &-g {
+            width: 10rem;
+            height: 10rem;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            span {
+                max-width: 100%;
+                max-height: 100%;
+                min-width: 3rem;
+                min-height: 3rem;
+                background: rgba(265, 265, 265, .3);
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+.projects {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 2rem 2rem 2rem 3rem;
+    max-height: 60rem;
+
+    &__wrap {
+        overflow-y: auto;
+        max-height: 50rem;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #fff;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #acacac;
+        }
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+        font-weight: 700;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    &__item {
+        cursor: pointer;
+        transition: all .3s;
+
+        &:hover {
+            opacity: 0.5;
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+}
